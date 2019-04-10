@@ -526,18 +526,26 @@ $config['rewrite_short_tags'] = FALSE;
 $config['proxy_ips'] = '';
 
 
+// function __autoload($class)
+// {
+	
+//     if (strpos($class, 'CI_') !== 0)
+//     {
+//         if (file_exists($file = APPPATH . 'core/' . $class . '.php'))
+//         {
+//             include $file;
+//         }
+//         elseif (file_exists($file = APPPATH . 'libraries/' . $class . '.php'))
+//         {
+//             include $file;
+//         }
+//     }
+// }
+
 function __autoload($class)
 {
-	
-    if (strpos($class, 'CI_') !== 0)
-    {
-        if (file_exists($file = APPPATH . 'core/' . $class . '.php'))
-        {
-            include $file;
-        }
-        elseif (file_exists($file = APPPATH . 'libraries/' . $class . '.php'))
-        {
-            include $file;
-        }
-    }
-}
+ if(strpos($class, 'CI_') !== 0)
+ {
+  @include_once( APPPATH . 'core/'. $class . '.php' );
+ }
+} 

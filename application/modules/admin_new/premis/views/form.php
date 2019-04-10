@@ -22,10 +22,10 @@
                 <?php require_once __DIR__."/../../blocks/alert_notification.php"; ?>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Nama Premis</label>
+                  <label for="inputEmail3" class="col-sm-2 control-label">Nama Gejala</label>
 
                   <div class="col-sm-10">
-                    <input type="text" name="name" class="form-control" placeholder="Nama" value="<?php echo isset($list) ? $list['name'] : '' ?>" required="">
+                    <input type="text" name="nama_premis" class="form-control" placeholder="Nama" value="<?php echo isset($list) ? $list['nama_premis'] : '' ?>" required="">
                   </div>
                 </div>
 
