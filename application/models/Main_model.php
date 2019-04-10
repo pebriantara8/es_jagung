@@ -213,6 +213,52 @@ class Main_model extends CI_Model {
 		}
 		return $q;
 	}
+
+	function insertBatchMM($table,$data){
+		// insert bacth many to many
+		if(!$data){
+			return true;
+		}else{
+			$q=$this->db->insert_batch($table, $data);
+			return $q;
+		}
+	}
+
+	function updateBatchMM($table,$data,$field,$field_value){
+		// update bacth many to many
+		$this->db->delete($table,[$field=>$field_value]);
+		if($data){
+			$q = $this->db->insert_batch($table,$data);
+			return $q;
+		}else{
+			return true;
+		}
+	}
+
+	function deleteR($table,$field,$field_value){
+		$ob = array(
+			'deleted_at' => date('Y-m-d H:i:s'),
+		);
+		$this->db->where($field, $field_value);
+		$qdel = $this->db->update($table, $ob);
+		return $qdel;
+	}
+
+	function restoreR($table,$field,$field_value){
+		$ob = array(
+			'deleted_at' => NULL,
+		);
+		// $this->db->set('deteled_at','NULL', FALSE);
+		$this->db->where($field, $field_value);
+		$qdel = $this->db->update($table, $ob);
+		return $qdel;
+	}
+
+	function purgeDelete($table,$field,$field_value){
+		$this->db->where($field, $field_value);
+		$q = $this->db->delete($table);
+		return $q;
+	}
 }
 
 /* End of file My_model.php */

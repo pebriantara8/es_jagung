@@ -14,11 +14,11 @@
 
           <?php require_once __DIR__."/../../blocks/alert_notification.php"; ?>
 
-          <a href="<?php echo backend_url().this_module() ?>/form" class="btn bg-primary btn-flat btn-sm" title="Tambah Pengguna Baru">Tambah Pengguna Baru</a>
+          <a href="<?php echo backend_url().this_module() ?>/form" class="btn bg-primary btn-flat btn-sm" title="Tambah Pengguna Baru">Tambah Gejala Baru</a>
 
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Pengguna</h3>
+              <h3 class="box-title">Gejala</h3>
 
 
             </div>
@@ -28,7 +28,7 @@
                 <tr>
                   <th style="width: 10px">#</th>
                   <th>Nama</th>
-                  <th style="width: 100px">Akses</th>
+                  <th style="width: 150px">Tangal</th>
                   <th style="width: 120px">Action</th>
                 </tr>
 
@@ -36,11 +36,11 @@
                 <?php foreach ($list_data as $key => $value): ?>
                 <tr>
                   <td><?php echo $no_urut; $no_urut++; ?>.</td>
-                  <td><?php echo $value['name'] ?></td>
-                  <td><?php echo $value['akses']==1 ? 'Admin' : 'Penulis'; ?></td>
+                  <td><?php echo $value['nama_premis'] ?></td>
+                  <td><?php echo $value['created_at']; ?></td>
                   <td>
-                    <a href="<?php echo backend_url().$this->modul ?>/form/<?php echo $value['id_user'] ?>" class="badge bg-green" title="Edit">Edit</a>
-                    <a href="<?php echo backend_url().$this->modul ?>/delete/<?php echo $value['id_user'] ?>" class="badge bg-red jc_delete_self" title="Edit">Hapus</a>
+                    <a href="<?php echo backend_url().$this->modul ?>/form/<?php echo $value['id'] ?>" class="badge bg-green" title="Edit">Edit</a>
+                    <a href="<?php echo backend_url().$this->modul ?>/delete/<?php echo $value['id'] ?>" class="badge bg-red jc_delete_self" title="Edit">Hapus</a>
                   </td>
                 </tr>
                 <?php endforeach ?>

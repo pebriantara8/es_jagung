@@ -1,4 +1,4 @@
     <div class="pull-right hidden-xs">
-      <b>Version</b> 1.0
+      <b>Version</b> 0.1
     </div>
-    <strong>Copyright &copy; 2018 GKI Adisucipto
+    <strong>Copyright &copy; 2019 Sistem Pakar Penyakit Jagung

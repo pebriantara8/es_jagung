@@ -86,9 +86,9 @@ $db['default'] = array(
 	// 'database' => 'dengeri1_presensi',
 
 	'hostname' => '156.67.211.127',
-	'username' => 'u1001863_user123',
-	'password' => 'user123',
-	'database' => 'u1001863_gki',
+	'username' => 'u1001863_es_jagung',
+	'password' => 'es_jagung',
+	'database' => 'u1001863_es_jagung',
 
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

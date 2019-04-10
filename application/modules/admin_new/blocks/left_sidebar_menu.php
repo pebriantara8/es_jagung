@@ -33,67 +33,42 @@
             </span>
           </a>
         </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-files-o"></i>
-            <span>Artikel</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="<?php echo backend_url() ?>posts/form"><i class="fa fa-circle-o"></i> Buat Artikel Baru</a></li>
-            <li><a href="<?php echo backend_url() ?>posts"><i class="fa fa-circle-o"></i> Artikel</a></li>
-            <li><a href="<?php echo backend_url() ?>posts/draft"><i class="fa fa-circle-o"></i> Draft Artikel</a></li>
-            <li><a href="<?php echo backend_url() ?>posts/archive"><i class="fa fa-circle-o"></i> Arsip Artikel</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-th"></i>
-            <span>Warta</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="<?php echo backend_url() ?>warta"><i class="fa fa-circle-o"></i> Warta</a></li>
-            <li><a href="<?php echo backend_url() ?>warta/archive"><i class="fa fa-circle-o"></i> Arsip Artikel</a></li>
-          </ul>
-        </li>
+
         <li>
-          <a href="<?php echo backend_url() ?>gallery">
-            <i class="fa fa-folder"></i> <span>Gallery</span>
+          <a href="<?= backend_url().'konklusi' ?>">
+            <i class="fa fa fa-files-o"></i> <span>Penyakit</span>
             <span class="pull-right-container">
               <!-- <small class="label pull-right bg-red">3</small> -->
             </span>
           </a>
         </li>
 
-        <?php if ($this->session->userdata('akses')==1) { ?>
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-cog"></i>
-              <span>Pengaturan</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="<?php echo backend_url() ?>slider_home"><i class="fa fa-circle-o"></i> Slider Halaman Depan</a></li>
-              <!-- <li><a href="collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Informasi Kontak</a></li> -->
-              <!-- <li><a href="collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Umum</a></li> -->
-            </ul>
-          </li>
-          <li>
-            <a href="<?= backend_url().'pengguna' ?>">
-                <i class="fa fa-users"></i> <span>Pengguna</span>
-                <span class="pull-right-container">
-                  <!-- <small class="label pull-right bg-red">3</small> -->
-                </span>
-              </a>
-            </li>
-          <?php }?>
+        <li>
+          <a href="<?= backend_url().'premis_kategori' ?>">
+            <i class="fa fa-user"></i> <span>Kategori Gejala</span>
+            <span class="pull-right-container">
+              <!-- <small class="label pull-right bg-red">3</small> -->
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="<?= backend_url().'premis' ?>">
+            <i class="fa fa-th"></i> <span>Gejala</span>
+            <span class="pull-right-container">
+              <!-- <small class="label pull-right bg-red">3</small> -->
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="<?= backend_url().'pengguna' ?>">
+            <i class="fa fa-users"></i> <span>Pengguna</span>
+            <span class="pull-right-container">
+              <!-- <small class="label pull-right bg-red">3</small> -->
+            </span>
+          </a>
+        </li>
 
         <li class="header">Informasi Pribadi</li>
         <!-- <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li> -->

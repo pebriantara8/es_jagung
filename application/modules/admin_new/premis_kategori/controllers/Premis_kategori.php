@@ -1,15 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed'); require 'application/modules/admin_new/grab/controllers/Grab.php';
 
-class Pengguna extends Grab {
+class Premis_kategori extends Grab {
 
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('my_m');
-		$this->data['page_title'] = "Users";
-        $this->tabel = 'users';
-        $this->id_name = 'id_user';
+		$this->data['page_title'] = "Kategori Gejala";
+        $this->tabel = 'premis_kategori';
+        $this->id_name = 'id';
 		//Do your magic here
         $this->posts = true;
         $this->path = './public/user/';
@@ -65,7 +65,7 @@ class Pengguna extends Grab {
         $data['no_urut'] = $limit['start']+1;
 		$this->pagination->initialize($config);
 
-        $data['title_content'] = "Pengguna";
+        $data['title_content'] = "Kategori Premis";
         $data['select2'] = true;
         $data['jquery_confirm'] = true;
         $data['content'] = "index";
@@ -122,7 +122,7 @@ class Pengguna extends Grab {
         $data['no_urut'] = $limit['start']+1;
 		$this->pagination->initialize($config);
 
-        $data['title_content'] = "Warta";
+        $data['title_content'] = "Kategori Premis";
         $data['title_content_desc'] = "Arsip";
         $data['select2'] = true;
         $data['jquery_confirm'] = true;
@@ -132,12 +132,13 @@ class Pengguna extends Grab {
 
 	public function form($id=null)
 	{
-        $dt_post = $this->wd_db->get_data_row('users',array('id_user'=>$id));
+        $dt_post = $this->wd_db->get_data_row($this->tabel,array($this->id_name=>$id));
         if($id){
             $data['list'] = $dt_post;
             $data['is_edit'] = true;
         }
-        $data['title_content'] = "Form Pengguna";
+        $data['list_kat_premis'] = $this->wd_db->get_data_row('premis_kategori');
+        $data['title_content'] = "Form Gejala";
         $data['select2'] = true;
         $data['jquery_confirm'] = true;
         $data['content'] = "form";
@@ -168,13 +169,8 @@ class Pengguna extends Grab {
         // }
 
         $ob = array(
-            'name' => $this->input->post('name'),
-            'email' => $this->input->post('email'),
-            'description' => "a",
-            'pass' => sha1($this->input->post('password')),
-            'tanggal_lahir' => $this->input->post('tanggal_lahir'),
-            // 'pelayanan_id' => $this->input->post('pelayanan_id'),
-            'akses' => '1',
+            'nama_premis_kategori' => $this->input->post('nama_premis'),
+            'created_at' => date('Y-m-d H:i:s'),
         );
         $qi = $this->db->insert($this->tabel, $ob);
         if($qi){
@@ -192,7 +188,7 @@ class Pengguna extends Grab {
     public function save_edit(){
 
         $id = $this->input->post('id');
-        $data_lama = $this->wd_db->get_data_row('users', array('id_user'=>$id));
+        $data_lama = $this->wd_db->get_data_row($this->tabel, array($this->id_name=>$id));
 
         // $set_img = array(
         //     'is_update' => FALSE,
@@ -216,24 +212,20 @@ class Pengguna extends Grab {
         // }
 
         $ob = array(
-            'name' => $this->input->post('name'),
-            'email' => $this->input->post('email'),
-            'description' => "a",
-            'pass' => sha1($this->input->post('password')),
-            'tanggal_lahir' => $this->input->post('tanggal_lahir'),
-            // 'pelayanan_id' => $this->input->post('pelayanan_id'),
-            'akses' => $this->input->post('akses'),
+            'nama_premis_kategori' => $this->input->post('nama_premis'),
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
         );
-        $this->db->where('id_user', $id);
+        $this->db->where($this->id_name, $id);
         $qi = $this->db->update($this->tabel, $ob);
         if($qi){
             $this->session->set_flashdata('alert_success', 'Berhasil update');
             $this->main_model->set_response_web('','Berhasil update',true);
         }else{
-            @unlink($set['path'].$up_file['filename']);
-            @unlink($set['new_path'].$up_file['filename']);
-            @unlink($set_img['path'].$up_file_img['filename']);
-            @unlink($set_img['new_path'].$up_file_img['filename']);
+            // @unlink($set['path'].$up_file['filename']);
+            // @unlink($set['new_path'].$up_file['filename']);
+            // @unlink($set_img['path'].$up_file_img['filename']);
+            // @unlink($set_img['new_path'].$up_file_img['filename']);
             $this->main_model->set_response_web('','Terjadi kesalahan saat menyimpan, silahkan hubungi operator',false);
         }
     }
