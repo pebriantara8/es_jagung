@@ -149,6 +149,7 @@ class Konklusi extends Grab {
 	}
 
     public function save(){
+        debug($this->input->post());
 
         // $set_img = array(
         //     'is_update' => FALSE,
