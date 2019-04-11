@@ -16,6 +16,12 @@
     <!-- Select2 -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/adminlte/bower_components/select2/dist/css/select2.min.css">
   <?php endif ?>
+
+  <?php if (isset($icheck)): ?>
+    <!-- Select2 -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/adminlte/plugins/iCheck/all.css">
+  <?php endif ?>
+
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/adminlte/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -286,6 +292,27 @@
   <script src="<?php echo base_url() ?>assets/adminlte/bower_components/select2/dist/js/select2.full.min.js"></script>
   <script>
     $('.select2').select2()
+  </script>
+<?php endif ?>
+<?php if (isset($icheck)): ?>
+  <!-- I-Check -->
+  <script src="<?php echo base_url() ?>assets/adminlte/plugins/iCheck/icheck.min.js"></script>
+  <script>
+    //iCheck for checkbox and radio inputs
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+      checkboxClass: 'icheckbox_minimal-blue',
+      radioClass   : 'iradio_minimal-blue'
+    })
+    //Red color scheme for iCheck
+    $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+      checkboxClass: 'icheckbox_minimal-red',
+      radioClass   : 'iradio_minimal-red'
+    })
+    //Flat red color scheme for iCheck
+    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+      checkboxClass: 'icheckbox_flat-green',
+      radioClass   : 'iradio_flat-green'
+    })
   </script>
 <?php endif ?>
 </body>

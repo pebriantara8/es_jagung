@@ -328,3 +328,4 @@ if( ! ini_get('date.timezone') )
  * And away we go...
  */
 require_once BASEPATH.'core/CodeIgniter.php';
+include_once './vendor/autoload.php';
