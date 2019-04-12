@@ -149,7 +149,24 @@ class Konklusi extends Grab {
 	}
 
     public function save(){
-        debug($this->input->post());
+
+        $dt_premis = $this->wd_db->get_data('premis');
+        $post = $this->input->post();
+        $premis_to_save=[];
+        $no=0;
+        foreach ($post as $key => $value) {
+            foreach ($dt_premis as $kdp => $vdp) {
+                if($vdp['id']==$key){
+                    $premis_to_save[$no]['premis_id'] = $vdp['id'];
+                    $premis_to_save[$no]['where_tipe'] = $value;
+                    $no++;
+                }
+            }
+        }
+
+        // debug($premis_to_save);
+
+        // debug($this->input->post());
 
         // $set_img = array(
         //     'is_update' => FALSE,
@@ -177,7 +194,22 @@ class Konklusi extends Grab {
             'created_at' => date('Y-m-d H:i:s'),
         );
         $qi = $this->db->insert($this->tabel, $ob);
+        $new_id = $this->db->insert_id();
         if($qi){
+            // save to rule
+            foreach ($premis_to_save as $kpts => $vpts) {
+                $object = array(
+                    'konklusi_id' => $new_id,
+                    'premis_id' => $vpts['premis_id'],
+                    'where_tipe' => $vpts['where_tipe'],
+                );
+                $q=$this->db->insert('rule', $object);
+                if($q){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
             $this->session->set_flashdata('alert_success', 'Berhasil menyimpan');
             $this->main_model->set_response_web('','Berhasil menyimpan',true);
         }else{

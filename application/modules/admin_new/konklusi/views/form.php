@@ -46,13 +46,13 @@
                       <div class="col-md-6">
                       <b>AND</b>
                         <?php foreach ($vlp['premis'] as $key => $vp) { ?>
-                          <input type="checkbox" name="<?=$vp['id']?>" value="and" class="flat-red"> <?=$vp['nama_premis']?>
+                          <input type="checkbox" name="<?=$vp['id']?>" value="AND" class="flat-red"> <?=$vp['nama_premis']?>
                         <?php } ?>
                       </div>
                       <div class="col-md-6"></div>
                       <b>OR</b>
                         <?php foreach ($vlp['premis'] as $key => $vp) { ?>
-                          <input type="checkbox" name="<?=$vp['id']?>" value="or" class="flat-red"> <?=$vp['nama_premis']?>
+                          <input type="checkbox" name="<?=$vp['id']?>" value="OR" class="flat-red"> <?=$vp['nama_premis']?>
                         <?php } ?>
                       <label>
                       </label>
