@@ -22,56 +22,6 @@ class Main_model extends CI_Model {
 		return $q['file'];
 	}
 
-	public function get_post($id=null,$limit=null)
-	{
-		$this->db->join('users u', 'u.id_user = posts.user_id', 'left');
-		$this->db->select('u.name ,posts.id_post, posts.title, posts.content, posts.image, posts.date, posts.views');
-		$this->db->order_by('date', 'desc');
-		if ($id==null) {
-			if ($limit) {
-				$q=$this->db->get('posts',$limit)->result_array();
-			}else{
-				$q=$this->db->get('posts')->result_array();
-			}
-		}else{
-			$this->db->where('id_post', $id);
-			$q=$this->db->get('posts')->row_array();
-		}
-		return $q;
-	}
-
-	public function get_post_popular()
-	{
-		$this->db->order_by('views', 'desc');
-		$q=$this->db->get('posts',4)->result_array();
-		return $q;
-	}
-
-	public function get_pelayanan($id=null,$limit=null)
-	{
-		$this->db->order_by('id_pelayanan', 'desc');
-		if($id) {
-			$this->db->where('id_pelayanan', $id);
-			$q=$this->db->get('pelayanan')->row_array();
-			foreach ($q as $key => $value) {
-				$this->db->join('users u', 'u.id_user = posts.user_id', 'left');
-				$this->db->where('u.pelayanan_id', $value['id_pelayanan']);
-				$q2=$this->db->get('posts')->result_array();
-				$q['total_post'] = count($q2);
-			}
-		}else{
-			if($limit) $this->db->limit($limit);
-			$q=$this->db->get('pelayanan')->result_array();
-			foreach ($q as $key => $value) {
-				$this->db->join('users u', 'u.id_user = posts.user_id', 'left');
-				$this->db->where('u.pelayanan_id', $value['id_pelayanan']);
-				$q2=$this->db->get('posts')->result_array();
-				$q[$key]['total_post'] = count($q2);
-			}
-		}
-		return $q;
-	}
-
 	function upload_file_single($set=array())
 	{
 		$response = array();
@@ -198,21 +148,6 @@ class Main_model extends CI_Model {
 		exit;
 		// return $res;
 	}
-	
-	public function getPostHome($id=null)
-	{
-		$this->db->select('
-			p.id_post, p.image, p.title, p.date, p.content,
-		');
-		$this->db->join('users u', 'u.id_user = p.user_id', 'left');
-		$this->db->order_by('p.date', 'desc');
-		$q=$this->db->get('posts p',3)->result_array();
-		foreach ($q as $key => $value) {
-			// $content2 = preg_match($regex, $text, $matches);
-			// $q[$key]['content2'] = 
-		}
-		return $q;
-	}
 
 	function insertBatchMM($table,$data){
 		// insert bacth many to many
@@ -260,6 +195,3 @@ class Main_model extends CI_Model {
 		return $q;
 	}
 }
-
-/* End of file My_model.php */
-/* Location: .//mnt/70bda58b-6fd9-d101-20a1-a58b6fd9d101/public_html/dengerin/api/api/models/My_model.php */
