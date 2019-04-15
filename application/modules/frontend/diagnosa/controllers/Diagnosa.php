@@ -10,7 +10,8 @@ class Diagnosa extends Grab_frontend {
 		// 	redirect('auth');
 		// }
 		// $this->user_info = $this->My_model_main->karyawan_row($this->session->userdata('device_id2'));
-		$this->load->model('home_model');
+		// $this->load->model('main_mo');
+		$this->load->model('my_m');
 		$this->date_today = date("Y-m-d H:i:s");
 	}
 
@@ -18,6 +19,23 @@ class Diagnosa extends Grab_frontend {
 	{
 		$data['content'] = 'index';
 		$this->view($data);
+		
+	}
+
+	public function start($sort=null)
+	{
+		$premis = $this->my_m->getPremis();
+		debug($premis);
+	}
+
+	public function next_diagnosa()
+	{
+
+		$array = array(
+			'key' => 'value' // true or false
+		);
+		
+		$this->session->set_userdata(['d'=>$array]);
 		
 	}
 

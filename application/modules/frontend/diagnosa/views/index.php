@@ -7,35 +7,38 @@
                         <label for="choice-1">
                             <input type="radio" id="choice-1" name="choice" value=""/>
                             <div>
-                                Daun jagung mengering
-                                <span>Yakin?</span>
+                                Ya
+                                <!-- <span>Yakin?</span> -->
                             </div>
                         </label>
                         
                         <label for="choice-2">
                             <input type="radio" id="choice-2" name="choice" value="" />
                             <div>
-                                Daun menguning
-                                <span>penyakit.</span>
+                                Tidak
+                                <!-- <span>penyakit.</span> -->
                             </div>
                         </label>
-                        
-                        <label for="choice-3">
-                            <input type="radio" id="choice-3" name="choice" value="" />
-                            <div>
-                                Daun membususk
-                                <span>Penyakit .</span>
-                            </div>
-                        </label>
-                        
-                        <label for="choice-4">
-                            <input type="radio" id="choice-4" name="choice" value="" />
-                            <div>
-                                daun jagung terkena ulat
-                                <span>No it doesn't.</span>
-                            </div>
-                        </label>
-                        <button type="submit">Next</button>
+
+                        <button type="submit">Lanjut</button>
                     </form>
                 </div>
-		  </div>
+          </div>
+          
+
+        <!-- <div class="container m_top">
+            <h1>Sistem Pakar </h1>
+            <form class="form cf">
+                <section class="plan cf">
+                    <h2>Pilih kriteria Penyakit:</h2>
+                    <input type="radio" name="radio1" id="free" value="free"><label class="free-label four col" for="free">Ya</label>
+                    <input type="radio" name="radio1" id="basic" value="basic" checked><label class="basic-label four col" for="basic">Tidak</label>
+                    <input type="radio" name="radio1" id="credit" value="credit"><label class="credit-label four col" for="credit">Lewati</label>
+                </section>
+                <center>
+                    <input class="submit" type="submit" value="Next">		
+    
+                </center>
+    
+            </form>
+        </div> -->

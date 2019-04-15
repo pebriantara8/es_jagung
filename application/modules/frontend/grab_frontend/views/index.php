@@ -13,8 +13,9 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?=base_url()?>assets/sp/css/bootstrap/bootstrap.min.css">
-	<link rel="stylesheet" href="<?=base_url()?>assets/sp/css/normalize/normalize.min.css">
+	  <link rel="stylesheet" href="<?=base_url()?>assets/sp/css/normalize/normalize.min.css">
     <link rel="stylesheet" href="<?=base_url()?>assets/sp/css/style.css">
+    <link rel="icon" type="image/png" href="<?=base_url()?>assets/sp/images/logo.svg">
   </head>
   <body>
 	<!-- Image and text -->

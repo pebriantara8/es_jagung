@@ -245,7 +245,7 @@ h1{
 .form label{
 	position: relative;
 	color: #fff;
-	background-color: #aaa;
+	background-color: #2881cc;
 	font-size: 26px;
 	text-align: center;
 	height: 150px;
@@ -259,8 +259,9 @@ h1{
 }
 
 .form .plan input:checked + label, .form .payment-plan input:checked + label, .form .payment-type input:checked + label{
-	border: 3px solid #333;
-	background-color: #2fcc71;
+	border: 3px solid #5f6368;
+  /* background-color: #2fcc71; */
+  background-color: #328d32;
 }
 
 .form .plan input:checked + label:after, form .payment-plan input:checked + label:after, .form .payment-type input:checked + label:after{
@@ -305,6 +306,11 @@ h1{
 
 
 /* custom+++ */
+
+.m_top{
+  margin-top: 120px;
+  color: black;
+}
 
 .form-wrapper{
   background-color:#ffffff;
