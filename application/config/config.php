@@ -543,10 +543,28 @@ $config['proxy_ips'] = '';
 //     }
 // }
 
-function __autoload($class)
+// function __autoload($class)
+// {
+//  if(strpos($class, 'CI_') !== 0)
+//  {
+//   @include_once( APPPATH . 'core/'. $class . '.php' );
+//  }
+// } 
+
+spl_autoload_register("banshee_autoload");
+
+function banshee_autoload($class)
 {
- if(strpos($class, 'CI_') !== 0)
- {
-  @include_once( APPPATH . 'core/'. $class . '.php' );
- }
-} 
+	
+    if (strpos($class, 'CI_') !== 0)
+    {
+        if (file_exists($file = APPPATH . 'core/' . $class . '.php'))
+        {
+            include $file;
+        }
+        elseif (file_exists($file = APPPATH . 'libraries/' . $class . '.php'))
+        {
+            include $file;
+        }
+    }
+}

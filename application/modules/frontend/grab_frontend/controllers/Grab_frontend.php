@@ -14,7 +14,6 @@ class Grab_frontend extends CI_Controller {
 	
 	public function view($data = NULL,$tipe=true)
 	{
-		$data['f_list_posts'] = $this->main_model->getPostHome();
 		$this->load->view('grab_frontend/index', $data);
 	}
 

@@ -1,0 +1,339 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *::after, *::before {
+  box-sizing: inherit;
+}
+
+html {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 16px;
+  font-weight: 200;
+  background-color: whitesmoke;
+  box-sizing: border-box;
+  background-image: url("https://static.pexels.com/photos/92976/pexels-photo-92976.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+body:before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.form-wrapper {
+  position: relative;
+  display: block;
+  width: 400px;
+  margin: 100px auto;
+  padding: 40px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 45px rgba(0, 0, 0, 0.5);
+}
+.form-wrapper p {
+  font-size: 14px;
+  line-height: 1.75;
+}
+.form-wrapper form {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 20px 0;
+  border-top: 1px solid #e6e6e6;
+}
+.form-wrapper form label {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 2px 0 0;
+  padding: 10px 0;
+}
+.form-wrapper form label input[type="radio"] {
+  position: relative;
+  display: inline-block;
+  margin-top: 3px;
+  margin-right: 15px;
+  font-size: 12px;
+  float: left;
+  z-index: 1;
+}
+.form-wrapper form label input[type="radio"]:checked + div span {
+  position: absolute;
+  display: inline-block;
+  left: 100%;
+  top: -5px;
+  margin: 0 0 0 20px;
+  padding: 8px 15px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  background-color: rgba(34, 34, 34, 0.9);
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(34, 34, 34, 0.2);
+  clear: both;
+  visibility: visible;
+  transform: translateX(0px);
+  transition: transform 200ms ease;
+}
+.form-wrapper form label input[type="radio"]:checked + div span:before {
+  position: absolute;
+  content: '';
+  top: 4px;
+  left: -1px;
+  border-top: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid rgba(34, 34, 34, 0.9);
+  transform: rotate(45deg);
+}
+.form-wrapper form label div {
+  position: relative;
+  display: inline-block;
+}
+.form-wrapper form label div span {
+  position: absolute;
+  visibility: hidden;
+  transform: translateX(-10px);
+  transition: transform 200ms ease;
+}
+.form-wrapper form label:nth-of-type(1) input[type="radio"]:checked + div span {
+  background-color: #2ecc71;
+}
+.form-wrapper form label:nth-of-type(1) input[type="radio"]:checked + div span:before {
+  border-top: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid rgba(46, 204, 113, 0.9);
+}
+.form-wrapper form label:nth-of-type(2) input[type="radio"]:checked + div span {
+  background-color: #3498db;
+}
+.form-wrapper form label:nth-of-type(2) input[type="radio"]:checked + div span:before {
+  border-top: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid rgba(52, 152, 219, 0.9);
+}
+.form-wrapper form label:nth-of-type(3) input[type="radio"]:checked + div span {
+  background-color: #f1c40f;
+}
+.form-wrapper form label:nth-of-type(3) input[type="radio"]:checked + div span:before {
+  border-top: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid rgba(241, 196, 15, 0.9);
+}
+.form-wrapper form label:nth-of-type(4) input[type="radio"]:checked + div span {
+  background-color: #9b59b6;
+}
+.form-wrapper form label:nth-of-type(4) input[type="radio"]:checked + div span:before {
+  border-top: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid rgba(155, 89, 182, 0.9);
+}
+.form-wrapper form label:nth-of-type(5) input[type="radio"]:checked + div span {
+  background-color: #e74c3c;
+}
+.form-wrapper form label:nth-of-type(5) input[type="radio"]:checked + div span:before {
+  border-top: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid rgba(231, 76, 60, 0.9);
+}
+.form-wrapper form button {
+  position: relative;
+  display: block;
+  margin: 40px auto 0;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: normal;
+  letter-spacing: 1px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  /* background-color: #ccc; */
+  background-color: #1a73e8;
+  z-index: 0;
+}
+.form-wrapper form button:before {
+  position: absolute;
+  content: '';
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: #9b59b6;
+  border-radius: 5px;
+  transition: height, 250ms ease;
+  z-index: -1;
+}
+.form-wrapper form button:hover {
+  box-shadow: 0 0 10px rgba(34, 34, 34, 0.3);
+}
+.form-wrapper form button:hover:before {
+  height: 100%;
+}
+/* scc buat kotak*/
+body{
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	color: #333;
+	background-color: #eee;
+}
+
+h1, h2, h3, h4, h5, h6{
+	font-weight: 200;
+}
+
+h1{
+	text-align: center;
+	padding-bottom: 10px;
+	border-bottom: 2px solid #2fcc71;
+	max-width: 40%;
+	margin: 20px auto;
+}
+
+/* CONTAINERS */
+
+.container {max-width: 850px; width: 100%; margin: 0 auto;}
+.four { width: 32.26%; max-width: 32.26%;}
+
+
+/* COLUMNS */
+
+.col {
+  display: block;
+  float:left;
+  margin: 1% 0 1% 1.6%;
+}
+
+.col:first-of-type { margin-left: 0; }
+
+/* CLEARFIX */
+
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+.cf {
+    *zoom: 1;
+}
+
+/* FORM */
+
+.form .plan input, .form .payment-plan input, .form .payment-type input{
+	display: none;
+}
+
+.form label{
+	position: relative;
+	color: #fff;
+	background-color: #aaa;
+	font-size: 26px;
+	text-align: center;
+	height: 150px;
+	line-height: 150px;
+	display: block;
+	cursor: pointer;
+	border: 3px solid transparent;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.form .plan input:checked + label, .form .payment-plan input:checked + label, .form .payment-type input:checked + label{
+	border: 3px solid #333;
+	background-color: #2fcc71;
+}
+
+.form .plan input:checked + label:after, form .payment-plan input:checked + label:after, .form .payment-type input:checked + label:after{
+	content: "\2713";
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 100%;
+	border: 2px solid #333;
+	background-color: #2fcc71;
+	z-index: 999;
+	position: absolute;
+	top: -10px;
+	right: -10px;
+}
+
+.submit{
+	padding: 15px 60px;
+	display: inline-block;
+	border: none;
+	margin: 20px 0;
+	background-color: #2fcc71;
+	color: #fff;
+	border: 2px solid #333;
+	font-size: 18px;
+	-webkit-transition: transform 0.3s ease-in-out;
+	-o-transition: transform 0.3s ease-in-out;
+	transition: transform 0.3s ease-in-out;
+}
+
+.submit:hover{
+	cursor: pointer;
+	transform: rotateX(360deg);
+}
+
+
+
+
+
+
+
+
+
+/* custom+++ */
+
+.form-wrapper{
+  background-color:#ffffff;
+  box-shadow: none;
+}
+
+body{
+  background-color: #ffffff;
+}
+
+.button_n1{
+  position: relative;
+  display: block;
+  margin: 40px auto 0;
+  padding: 12px 40px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  /* background-color: #ccc; */
+  background-color: #1a73e8;
+  z-index: 0;
+}
+.button_n1:hover{
+  cursor: pointer;
+  background-color: #4285f4;
+  box-shadow: 0 1px 1px 0 rgba(66, 133, 0, 45), 0 1px 3px 1px rgba(66, 133, 244, 0.3);
+}
+
+/* biru google #1a73e8 */

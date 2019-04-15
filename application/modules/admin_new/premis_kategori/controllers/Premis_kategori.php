@@ -170,6 +170,7 @@ class Premis_kategori extends Grab {
 
         $ob = array(
             'nama_premis_kategori' => $this->input->post('nama_premis'),
+            'pertanyaan' => $this->input->post('pertanyaan'),
             'created_at' => date('Y-m-d H:i:s'),
         );
         $qi = $this->db->insert($this->tabel, $ob);
@@ -213,6 +214,7 @@ class Premis_kategori extends Grab {
 
         $ob = array(
             'nama_premis_kategori' => $this->input->post('nama_premis'),
+            'pertanyaan' => $this->input->post('pertanyaan'),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         );

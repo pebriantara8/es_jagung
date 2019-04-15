@@ -29,6 +29,14 @@
                   </div>
                 </div>
 
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Pertanyaan</label>
+
+                  <div class="col-sm-10">
+                    <textarea class="form-control" name="pertanyaan"><?php echo isset($list) ? $list['pertanyaan'] : '' ?></textarea>
+                  </div>
+                </div>
+
 
               </div>
               <!-- /.box-body -->

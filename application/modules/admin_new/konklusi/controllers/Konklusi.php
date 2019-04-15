@@ -139,6 +139,7 @@ class Konklusi extends Grab {
         }
         $data['list_kat_premis'] = $this->wd_db->get_data('premis_kategori');
         $data['list_premis'] = $this->my_m->getPremisAll('premis_kategori');
+        $data['list_rule'] = $this->wd_db->get_data('rule',['konklusi_id'=>$id]);
         $data['title_content'] = "Form Penyakit";
         $data['select2'] = true;
         $data['icheck'] = true;
@@ -226,6 +227,9 @@ class Konklusi extends Grab {
         $id = $this->input->post('id');
         $data_lama = $this->wd_db->get_data_row($this->tabel, array($this->id_name=>$id));
 
+        // debug($this->input->post());
+        // debug($ob2);
+
         // $set_img = array(
         //     'is_update' => FALSE,
         //     'input_file_name' => 'file',
@@ -255,6 +259,23 @@ class Konklusi extends Grab {
         $this->db->where($this->id_name, $id);
         $qi = $this->db->update($this->tabel, $ob);
         if($qi){
+
+            // input ke rule, rule apa saja yang dipilih
+            
+            $this->db->delete('rule',['konklusi_id'=>$id]);
+            $dt_p = $this->input->post();
+            $ob2=[];
+            foreach ($dt_p as $key => $value) {
+                if(is_numeric($key)){
+                    $ob2[] = array(
+                        'konklusi_id' => $id,
+                        'premis_id' => $key,
+                        'where_tipe' => $value,
+                    );
+                }
+            }
+            $this->db->insert_batch('rule', $ob2);
+            
             $this->session->set_flashdata('alert_success', 'Berhasil update');
             $this->main_model->set_response_web('','Berhasil update',true);
         }else{

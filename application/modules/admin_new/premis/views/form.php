@@ -33,7 +33,7 @@
                   <label for="inputEmail3" class="col-sm-2 control-label">Kategori Gejala</label>
 
                   <div class="col-sm-10">
-                    <select class="select2" name="kategori_premis" required="">
+                    <select class="select2" name="premis_kategori_id" required="">
                       <option value="">Kategori Gejala</option>
                       <?php foreach ($list_kat_premis as $key => $value): ?>
                           <option <?php echo (isset($list)?$list['premis_kategori_id']:'')==$value['id']?' selected':'' ?> value="<?php echo $value['id'] ?>"><?php echo $value['nama_premis_kategori'] ?></option>

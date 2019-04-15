@@ -29,8 +29,4 @@ e.preventDefault();
     });
 }));
 
-function diagnosa(){
-	window.location.href = '<?=base_url()?>diagnosa';
-}
-
 </script>

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed'); require 'application/modules/frontend/grab_frontend/controllers/Grab_frontend.php';
 
-class Home extends Grab_frontend {
+class Diagnosa extends Grab_frontend {
 
 	public function __construct()
 	{

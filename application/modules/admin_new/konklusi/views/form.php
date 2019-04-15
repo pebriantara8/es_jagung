@@ -44,15 +44,43 @@
                     <div class="col-sm-10">
                       <u><h5 class="box-title" style="font-weight:bold;"><?=$vlp['nama_premis_kategori']?></h5></u>
                       <div class="col-md-6">
-                      <b>AND</b>
                         <?php foreach ($vlp['premis'] as $key => $vp) { ?>
-                          <input type="checkbox" name="<?=$vp['id']?>" value="AND" class="flat-red"> <?=$vp['nama_premis']?>
+                          <div>
+                              <b>AND</b>
+                              <?php 
+                                $cheked="";
+                                if (isset($list_rule)) {
+                                  foreach ($list_rule as $klr => $vlr) {
+                                    if ($vlr['konklusi_id']==$list['id'] AND $vlr['premis_id']==$vp['id'] AND $vlr['where_tipe']=='AND') {
+                                      $cheked="checked";
+                                    }
+                                  }
+                                }else{
+                                  $cheked="";
+                                } 
+                              ?>
+                              <input type="checkbox" <?=$cheked?> name="<?=$vp['id']?>" value="AND" class="flat-red"> <?=$vp['nama_premis']?>
+                          </div>
                         <?php } ?>
                       </div>
                       <div class="col-md-6"></div>
-                      <b>OR</b>
-                        <?php foreach ($vlp['premis'] as $key => $vp) { ?>
-                          <input type="checkbox" name="<?=$vp['id']?>" value="OR" class="flat-red"> <?=$vp['nama_premis']?>
+                      <?php foreach ($vlp['premis'] as $key => $vp) { ?>
+                        <div>
+                          <b>OR</b>
+                          <?php 
+                            $cheked_or="";
+                            if (isset($list_rule)) {
+                              foreach ($list_rule as $klr => $vlr_or) {
+                                if ($vlr_or['konklusi_id']==$list['id'] AND $vlr_or['premis_id']==$vp['id'] AND $vlr_or['where_tipe']=='OR') {
+                                  $cheked_or="checked";
+                                }
+                              }
+                            }else{
+                              $cheked_or="";
+                            } 
+                          ?>
+                          <input type="checkbox" <?=$cheked_or?> name="<?=$vp['id']?>" value="OR" class="flat-red"> <?=$vp['nama_premis']?>
+                        </div>
                         <?php } ?>
                       <label>
                       </label>

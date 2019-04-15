@@ -132,7 +132,7 @@ class Premis extends Grab {
 
 	public function form($id=null)
 	{
-        $dt_post = $this->wd_db->get_data_row('users',array('id_user'=>$id));
+        $dt_post = $this->wd_db->get_data_row('premis',array($this->id_name=>$id));
         if($id){
             $data['list'] = $dt_post;
             $data['is_edit'] = true;
@@ -170,6 +170,7 @@ class Premis extends Grab {
 
         $ob = array(
             'nama_premis' => $this->input->post('nama_premis'),
+            'premis_kategori_id' => $this->input->post('premis_kategori_id'),
             'created_at' => date('Y-m-d H:i:s'),
         );
         $qi = $this->db->insert($this->tabel, $ob);
@@ -186,6 +187,8 @@ class Premis extends Grab {
     }
 
     public function save_edit(){
+        // debug($this->input->post());
+        
 
         $id = $this->input->post('id');
         $data_lama = $this->wd_db->get_data_row($this->tabel, array($this->id_name=>$id));
@@ -213,6 +216,7 @@ class Premis extends Grab {
 
         $ob = array(
             'nama_premis' => $this->input->post('nama_premis'),
+            'premis_kategori_id' => $this->input->post('premis_kategori_id'),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         );
@@ -236,7 +240,7 @@ class Premis extends Grab {
             $this->session->set_flashdata('alert_error', 'Error server, hubungi developer');
             redirect(backend_url().$this->modul.'/'.$go);
         }
-        $q = $this->main_model->deleteR($this->tabel, 'id_user',$id);
+        $q = $this->main_model->deleteR($this->tabel, $this->id_name,$id);
         if ($q) {
             $this->session->set_flashdata('alert_success', 'Data berhasil dihapus');
             redirect(backend_url().$this->modul.'/'.$go);
@@ -252,7 +256,7 @@ class Premis extends Grab {
             $this->session->set_flashdata('alert_error', 'Error server, hubungi developer');
             redirect(backend_url().$this->modul.'/'.$go);
         }
-        $q = $q = $this->main_model->restoreR($this->tabel, 'id_user',$id);
+        $q = $q = $this->main_model->restoreR($this->tabel, $this->id_name,$id);
         if ($q) {
             $this->session->set_flashdata('alert_success', 'Data berhasil dikembalikan');
             redirect(backend_url().$this->modul.'/'.$go);
@@ -268,7 +272,7 @@ class Premis extends Grab {
             $this->session->set_flashdata('alert_error', 'Error server, hubungi developer');
             redirect(backend_url().$this->modul.'/'.$go);
         }
-        $q = $this->main_model->purgeDelete($this->tabel, 'id_user',$id);
+        $q = $this->main_model->purgeDelete($this->tabel, $this->id_name,$id);
         if ($del) {
             //delete file gambar utama
             @unlink($this->path.$dt['image']);
