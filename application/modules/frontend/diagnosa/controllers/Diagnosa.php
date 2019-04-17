@@ -35,15 +35,29 @@ class Diagnosa extends Grab_frontend {
 
 	public function start($sort=null)
 	{
-		$d = [];
-		$nd = [];
-		$dt_n = $this->session->userdata('n');
+		// $dt_d = [];
+		// $dt_nd = [];
+		$dt_d = $this->session->userdata('d');
 		$dt_nd = $this->session->userdata('nd');
 		$premis = $this->my_m->getPremis();
-		$premis_fix = $this->my_m->getPremisKategori($premis[0]['id_pk']);
+		if(count($dt_d)==0) $dt_d=null;
+		if(count($dt_nd)==0) $dt_nd=null;
+		
+		$rule = $this->my_m->getRule($dt_d,$dt_nd);
+		if(count($rule)!=0) $kid=$rule[0]['konklusi_id'];
+		$bb['rule'] = $rule;
+		// debug($bb);
+		
+		$premis_fix = $this->my_m->getRuleSelected($kid,$dt_d,$dt_nd);
+		$bb['premis_fix'] = $premis_fix;
+		if(count($premis_fix)!=0) $pf=$premis_fix[0];
+		else $pf=null;
+
+		if($sort=='1'){
+			debug($bb);
+		}
 		$data['content'] = 'pertanyaan';
-		$data['list_premis'] = $premis_fix;
-		debug($data);
+		$data['list_premis'] = $pf;
 		$this->view($data);
 	}
 

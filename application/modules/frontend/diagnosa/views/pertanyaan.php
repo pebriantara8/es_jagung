@@ -6,7 +6,7 @@
                     <h4><?=$list_premis['nama_premis']?>?</h4>
                 </div>
                     <form action="<?=base_url()?>diagnosa/next" method="post">
-                    <input type="hidden" name="p_id" value="<?=$list_premis['id']?>">
+                    <input type="hidden" name="p_id" value="<?=$list_premis['premis_id']?>">
                         <label for="choice-1">
                             <input type="radio" id="choice-1" name="choice" value="1" required/>
                             <div>
