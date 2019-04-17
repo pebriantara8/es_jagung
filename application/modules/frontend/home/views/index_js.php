@@ -30,7 +30,7 @@ e.preventDefault();
 }));
 
 function diagnosa(){
-	window.location.href = '<?=base_url()?>diagnosa';
+	window.location.href = '<?=base_url()?>diagnosa/start';
 }
 
 </script>

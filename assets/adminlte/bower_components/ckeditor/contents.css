@@ -16,7 +16,7 @@ body
 	/* Remove the background color to make it transparent. */
 	background-color: #fff;
 
-	margin: 20px;
+	/* margin: 20px; */
 }
 
 .cke_editable
@@ -26,6 +26,11 @@ body
 
 	/* Fix for missing scrollbars with RTL texts. (#10488) */
 	word-wrap: break-word;
+
+}
+
+.cke_editable p{
+	margin: 0px;
 }
 
 blockquote

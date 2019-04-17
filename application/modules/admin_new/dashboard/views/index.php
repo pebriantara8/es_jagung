@@ -19,8 +19,8 @@
             <span class="info-box-icon bg-red"><i class="fa fa-list"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Warta</span>
-              <span class="info-box-number"><?php echo $total_warta ?></span>
+              <span class="info-box-text">Penyakit</span>
+              <span class="info-box-number"><?php echo $total_konklusi ?></span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -36,8 +36,8 @@
             <span class="info-box-icon bg-green"><i class="ion ion-ios-list"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Artikel</span>
-              <span class="info-box-number"><?php echo $total_post ?></span>
+              <span class="info-box-text">Gejala</span>
+              <span class="info-box-number"><?php echo $total_premis ?></span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -49,8 +49,8 @@
             <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">New Members</span>
-              <span class="info-box-number"><?php echo $total_member ?></span>
+              <span class="info-box-text">Diagnosa</span>
+              <span class="info-box-number"><?php echo $total_diagnosa ?></span>
             </div>
             <!-- /.info-box-content -->
           </div>

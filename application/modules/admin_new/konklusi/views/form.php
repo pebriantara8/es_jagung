@@ -30,6 +30,16 @@
                 </div>
 
                 <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Solusi</label>
+
+                  <div class="col-sm-10">
+                    <textarea id="editor1" name="solusi" width="100%">
+                    <?php echo isset($list) ? $list['solusi'] : '' ?>
+                    </textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
                   <label for="" class="col-sm-2 control-label"></label>
 
                   <div class="col-sm-10">

@@ -44,6 +44,7 @@ CKEDITOR.stylesSet.add( 'default', [
 			border: '1px solid #ccc'
 		}
 	},
+	{ name: 'Paragraph',		element: 'p', styles: { 'margin': '0px' } },
 
 	/* Inline styles */
 

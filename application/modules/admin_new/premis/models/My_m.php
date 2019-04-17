@@ -26,7 +26,6 @@ class My_m extends CI_Model {
 		$e = $this->db->get();
 		return (!$limit) ? $e->num_rows() : $e->result_array();
 	}
-
 }
 
 /* End of file M_posts.php */

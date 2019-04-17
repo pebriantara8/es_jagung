@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed'); require 'application/modules/admin/grab/controllers/Grab.php';
+defined('BASEPATH') OR exit('No direct script access allowed'); require 'application/modules/admin_new/grab/controllers/Grab.php';
 
 class Profile extends Grab {
 

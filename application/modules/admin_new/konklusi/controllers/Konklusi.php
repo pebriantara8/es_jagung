@@ -143,6 +143,7 @@ class Konklusi extends Grab {
         $data['title_content'] = "Form Penyakit";
         $data['select2'] = true;
         $data['icheck'] = true;
+        $data['ckeditor'] = true;
         $data['jquery_confirm'] = true;
         $data['content'] = "form";
         // debug($data);
@@ -173,6 +174,7 @@ class Konklusi extends Grab {
 
         $ob = array(
             'nama_konklusi' => $this->input->post('nama_penyakit'),
+            'solusi' => $this->input->post('solusi'),
             'created_at' => date('Y-m-d H:i:s'),
         );
         $qi = $this->db->insert($this->tabel, $ob);
@@ -236,6 +238,7 @@ class Konklusi extends Grab {
 
         $ob = array(
             'nama_konklusi' => $this->input->post('nama_penyakit'),
+            'solusi' => $this->input->post('solusi'),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         );

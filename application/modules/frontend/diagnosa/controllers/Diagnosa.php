@@ -17,6 +17,7 @@ class Diagnosa extends Grab_frontend {
 
 	public function index()
 	{
+		redirect('diagnosa/start');
 		$data['content'] = 'index';
 		$this->view($data);
 		
@@ -116,18 +117,18 @@ class Diagnosa extends Grab_frontend {
 			$hitungr = $this->db->get('rule r')->result_array();
 			$rr = $this->my_m->getResultRule($dt_d);
 			$pro = (count($rr)/count($hitungr))*100;
-			$rule[$keyr]['presentase'] = round($pro, 2);
+			$rule[$keyr]['persentase'] = round($pro, 2);
 		}
 		
 		$this->db->affected_rows();
 		$rr2 = $this->db->get('rule r')->result_array();
 		
-		// debug($rule);
+		// debug($rule);s
 
 		if(count($rule)>0){
 			$data['gejala'] = $this->my_m->getResultRule($dt_d);
 			$data['content'] = 'result';
-			$data['list_penyakit'] = $rule[0];
+			$data['list_penyakit'] = $rule;
 			// debug($data);
 			$this->view($data);
 		}elseif(count($rule)<=0){

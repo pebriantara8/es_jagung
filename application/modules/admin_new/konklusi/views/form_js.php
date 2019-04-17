@@ -3,6 +3,12 @@
 $("#frm_ed_img").on('submit',(function(e) {
 e.preventDefault();
 
+    if( typeof(CKEDITOR) !== "undefined" ){
+			for (instance in CKEDITOR.instances) {
+					CKEDITOR.instances[instance].updateElement();
+			}
+		}
+
     // var dtt = new FormData(this);
     $.ajax({
     url: $(this).attr('action'), // Url to which the request is send

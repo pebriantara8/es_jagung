@@ -14,19 +14,19 @@ class Dashboard extends Grab {
 		$cpu_traffic = sys_getloadavg();
 		$data['cpu_traffic'] = $cpu_traffic[0];
 
-		$data_post = $this->wd_db->get_data('konklusi');
-		$data['total_post'] = count($data_post);
+		$data_post = $this->wd_db->get_data('konklusi',['deleted_at !='=>'null']);
+		$data['total_konklusi'] = count($data_post);
 		
 		$members = $this->wd_db->get_data('premis');
-		$data['total_member'] = count($members);
+		$data['total_premis'] = count($members);
 
 		$warta = $this->wd_db->get_data('diagnosa');
-		$data['total_warta'] = count($warta);
+		$data['total_diagnosa'] = count($warta);
 
 		// echo "string";
         $data['content'] = "index";
         $data['title_content'] = "Dashboard";
-        $data['title_content_desc'] = "Panel Dashboard Corn Expert System";
+        $data['title_content_desc'] = "Panel Dashboard Sistem Pakar";
         $this->view($data,false);
 	}
 

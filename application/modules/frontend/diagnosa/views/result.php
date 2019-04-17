@@ -9,6 +9,7 @@
     }
     .container{
         color: black;
+        /* padding-bottom: 50px; */
     }
 
     h4{
@@ -49,12 +50,16 @@
                 </div>
                 <br>
                     <p class="p"><strong>Nama Penyakit:</strong></p>
-                    <p><?=$list_penyakit['nama_konklusi']?></p>
+                    <?php foreach ($list_penyakit as $klp => $vlp) { ?>
+                        <p><?=$vlp['nama_konklusi']?> (<?=$vlp['persentase']?>%)</p>
+                    <?php } ?>
 
                     <br>
                     <p class="p"><strong>Saran:</strong></p>
+                    <p><?=$list_penyakit[0]['solusi']?></p>
                 </div>
             </div>
-            <div class="text-center">
+
+            <div class="text-center" style="padding-bottom:50px;">
                 <a href="<?=base_url()?>diagnosa/sesdes" class="btn btn-secondary">Ulangi Diagnosa</a>
             </div>

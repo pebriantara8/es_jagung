@@ -3,7 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Admin GKI Adisucipto</title>
+  <meta name="baseUrl" content="<?=base_url()?>"/>
+  <link rel="icon" type="image/png" href="<?=base_url()?>assets/sp/images/logo.svg">
+  <title>Admin ESoC</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -312,6 +314,30 @@
     $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
       checkboxClass: 'icheckbox_flat-green',
       radioClass   : 'iradio_flat-green'
+    })
+  </script>
+<?php endif ?>
+<?php if (isset($ckeditor)): ?>
+  <!-- Select2 -->
+  <script src="<?php echo base_url() ?>assets/adminlte/bower_components/ckeditor/ckeditor.js"></script>
+  <script>
+    function getMeta(attr,attr_value,get_to) {
+      var content = document.querySelector("meta["+attr+"="+attr_value+"]").getAttribute(get_to);
+      return content;
+    }
+    var baseUrl = getMeta('name','baseUrl','content')
+    $(function () {
+      // Replace the <textarea id="editor1"> with a CKEditor
+      // instance, using default configuration.
+      CKEDITOR.replace('editor1', {
+        // Load the default contents.css file plus customizations for this sample.
+        contentsCss: [
+        //   'http://cdn.ckeditor.com/4.11.3/full-all/contents.css',
+        baseUrl+'assets/adminlte/bower_components/ckeditor/css/style_ckeditor.css'
+        ]
+      });
+      //bootstrap WYSIHTML5 - text editor
+      // $('.textarea').wysihtml5()
     })
   </script>
 <?php endif ?>
