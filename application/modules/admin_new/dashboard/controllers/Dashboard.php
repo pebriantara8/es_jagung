@@ -11,8 +11,9 @@ class Dashboard extends Grab {
 
 	public function index()
 	{
-		$cpu_traffic = sys_getloadavg();
-		$data['cpu_traffic'] = $cpu_traffic[0];
+		// $cpu_traffic = sys_getloadavg();
+		// $data['cpu_traffic'] = $cpu_traffic[0];
+		$data['cpu_traffic'] = "0%";
 
 		$data_post = $this->wd_db->get_data('konklusi',['deleted_at !='=>'null']);
 		$data['total_konklusi'] = count($data_post);
