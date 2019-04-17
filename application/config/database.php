@@ -76,15 +76,15 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=>	'',
 
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'es_jagung',
+	// 'hostname' => 'localhost',
+	// 'username' => 'root',
+	// 'password' => '',
+	// 'database' => 'es_jagung',
 
-	// 'hostname' => '156.67.211.127',
-	// 'username' => 'u1001863_es_jagung',
-	// 'password' => 'es_jagung',
-	// 'database' => 'u1001863_es_jagung',
+	'hostname' => '156.67.211.127',
+	'username' => 'u1001863_es_jagung',
+	'password' => 'es_jagung',
+	'database' => 'u1001863_es_jagung',
 
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
