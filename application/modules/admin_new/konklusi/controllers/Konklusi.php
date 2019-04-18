@@ -54,8 +54,9 @@ class Konklusi extends Grab {
         $config['num_tag_close'] = '</li>';
 
 		if(isset($params['per_page'])){$page=$params['per_page'];} else{ $page=1;}
-		$where = ['a.deleted_at IS NULL'];
-		$like = '';
+        $where = ['a.deleted_at IS NULL'];
+        if(isset($params['search'])) $like=$params['search'];
+		else $like = '';
 		$order = ['a.created_at'=>'desc'];
 		$limit['offset'] = $config['per_page'];
 		$limit['start'] = ($page - 1)*$config['per_page'];

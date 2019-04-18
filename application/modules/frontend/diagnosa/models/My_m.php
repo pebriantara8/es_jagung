@@ -71,8 +71,8 @@ class My_m extends CI_Model {
 					}
 				}
 			}
-
-			// debug($add);
+			
+			debug($add);
 
 			
 			if($add==true){
@@ -82,7 +82,7 @@ class My_m extends CI_Model {
 			}
 		}
 		
-		// debug($qf);
+		debug($qf);
 		
 		if(count($where)<=0 AND count($where_not)<=0) return $q;
 		else return $qf;

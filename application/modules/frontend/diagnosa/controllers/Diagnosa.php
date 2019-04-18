@@ -43,9 +43,10 @@ class Diagnosa extends Grab_frontend {
 		$premis = $this->my_m->getPremis();
 		if(count($dt_d)==0) $dt_d=null;
 		if(count($dt_nd)==0) $dt_nd=null;
+		// debug($dt_nd);
 		
 		$rule = $this->my_m->getRule($dt_d,$dt_nd);
-		// debug($rule);
+		debug($rule);
 		if(count($rule)!=0) $kid=$rule[0]['id'];
 		else $kid=null;
 		$bb['rule'] = $rule;

@@ -31,6 +31,8 @@ class My_m extends CI_Model {
 		$pg = $this->db->get('premis_kategori')->result_array();
 		foreach ($pg as $key => $value) {
 			$this->db->where('premis_kategori_id', $value['id']);
+			$this->db->where('deleted_at IS NULL');
+			
 			$pg[$key]['premis'] = $this->db->get('premis')->result_array();
 		}
 		return $pg;
