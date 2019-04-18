@@ -51,7 +51,8 @@
                 <br>
                     <p class="p"><strong>Nama Penyakit:</strong></p>
                     <?php foreach ($list_penyakit as $klp => $vlp) { ?>
-                        <p><?=$vlp['nama_konklusi']?> (<?=$vlp['persentase']?>%)</p>
+                        <!-- <p><?=$vlp['nama_konklusi']?> (<?=$vlp['persentase']?>%)</p> -->
+                        <p><?=$vlp['nama_konklusi']?></p>
                     <?php } ?>
 
                     <br>

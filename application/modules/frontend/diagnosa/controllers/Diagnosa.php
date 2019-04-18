@@ -46,15 +46,18 @@ class Diagnosa extends Grab_frontend {
 		// debug($dt_nd);
 		
 		$rule = $this->my_m->getRule($dt_d,$dt_nd);
-		debug($rule);
+		// debug($rule);
 		if(count($rule)!=0) $kid=$rule[0]['id'];
 		else $kid=null;
 		$bb['rule'] = $rule;
 		
 		$premis_fix = $this->my_m->getRuleSelected($kid,$dt_d,$dt_nd);
+		// $premis_fix = $this->my_m->getRuleSelected2($rule);
 		$bb['premis_fix'] = $premis_fix;
 		if(count($premis_fix)!=0) $pf=$premis_fix[0];
 		else $pf=null;
+
+		// debug($premis_fix);
 		
 		
 		// alihkan ketika data tidak ditemukan
@@ -78,7 +81,65 @@ class Diagnosa extends Grab_frontend {
 		$this->view($data);
 	}
 
-	public function result()
+	public function result(){
+		// $dt_d = [];
+		// $dt_nd = [];
+		$dt_d = $this->session->userdata('d');
+		$dt_nd = $this->session->userdata('nd');
+		$premis = $this->my_m->getPremis();
+		if(count($dt_d)==0) $dt_d=null;
+		if(count($dt_nd)==0) $dt_nd=null;
+		// debug($dt_nd);
+
+		$rule = $this->my_m->getRule($dt_d,$dt_nd);
+		if(count($rule)<=0){
+			array_pop($dt_d);
+			$rule = $this->my_m->getRule($dt_d,$dt_nd);
+			if(count($rule)<=0){
+				$dt_d = $this->session->userdata('d');
+				array_pop($dt_nd);
+				$rule = $this->my_m->getRule($dt_d,$dt_nd);
+			}
+		}
+
+		// presentase penyakit
+		foreach ($rule as $keyr => $valuer) {
+			$this->db->where('r.konklusi_id', $valuer['id']);
+			$hitungr = $this->db->get('rule r')->result_array();
+			$rhrf=[];
+			foreach ($hitungr as $khr => $vhr) {
+				$rhrf[] = $vhr['id'];
+			}
+
+			$rr = $this->my_m->getResultRule($dt_d);
+			$rrf=[];
+			$sama=0;
+			foreach ($rr as $krr => $vrr) {
+				if(in_array($vrr['id_premis'],$rhrf)){
+					$sama++;
+				}
+			}
+			// debug($rr);
+
+			$pro = ($sama/count($hitungr))*100;
+			$rule[$keyr]['persentase'] = round($pro, 2);
+		}
+
+		if(count($rule)>0){
+			$data['gejala'] = $this->my_m->getResultRule($dt_d);
+			$data['content'] = 'result';
+			$data['list_penyakit'] = $rule;
+			$this->view($data);
+		}elseif(count($rulefix)<=0){
+			$data['content'] = 'result_not_found';
+			$this->view($data);
+		}else{
+			redirect('diagnosa/start');
+		}
+
+	}
+
+	public function result_old()
 	{
 		$dt_d = $this->session->userdata('d');
 		$dt_nd = $this->session->userdata('nd');
@@ -112,27 +173,44 @@ class Diagnosa extends Grab_frontend {
 		}
 
 		// presentase penyakit
-		// debug($rule);
 		foreach ($rule as $keyr => $valuer) {
 			$this->db->where('r.konklusi_id', $valuer['id']);
 			$hitungr = $this->db->get('rule r')->result_array();
+			$rhrf=[];
+			foreach ($hitungr as $khr => $vhr) {
+				$rhrf[] = $vhr['id'];
+			}
+
 			$rr = $this->my_m->getResultRule($dt_d);
-			$pro = (count($rr)/count($hitungr))*100;
+			$rrf=[];
+			$sama=0;
+			foreach ($rr as $krr => $vrr) {
+				if(in_array($vrr['id_premis'],$rhrf)){
+					$sama++;
+				}
+			}
+			// debug($rr);
+
+			$pro = ($sama/count($hitungr))*100;
 			$rule[$keyr]['persentase'] = round($pro, 2);
 		}
 		
-		$this->db->affected_rows();
-		$rr2 = $this->db->get('rule r')->result_array();
+		// $this->db->affected_rows();
+		// $rr2 = $this->db->get('rule r')->result_array();
+		// debug($rule);
+		$rulefix=[];
+		foreach ($rule as $rf => $vrf) {
+			if($vrf['persentase']>50){
+				$rulefix[] = $vrf;
+			}
+		}
 		
-		// debug($rule);s
-
-		if(count($rule)>0){
+		if(count($rulefix)>0){
 			$data['gejala'] = $this->my_m->getResultRule($dt_d);
 			$data['content'] = 'result';
 			$data['list_penyakit'] = $rule;
-			// debug($data);
 			$this->view($data);
-		}elseif(count($rule)<=0){
+		}elseif(count($rulefix)<=0){
 			$data['content'] = 'result_not_found';
 			$this->view($data);
 		}else{

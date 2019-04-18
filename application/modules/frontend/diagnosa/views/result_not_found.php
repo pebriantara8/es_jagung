@@ -2,7 +2,7 @@
 		  <div class="container">
 			<div class="form-wrapper">
                 <div class="text-center">
-                    <h2><strong>Diagnosa Tidak DItemukan</strong></h2>
+                    <h2><strong>Diagnosa Tidak Ditemukan</strong></h2>
                     <h4>Sistem kami tidak menemukan penyakit yang sesuai dengan gejala-gejala yang Anda masukkan.</h4>
                 </div>
             </div>
