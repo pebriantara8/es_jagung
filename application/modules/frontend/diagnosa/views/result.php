@@ -50,10 +50,10 @@
                 </div>
                 <br>
                     <p class="p"><strong>Nama Penyakit:</strong></p>
-                    <?php foreach ($list_penyakit as $klp => $vlp) { ?>
-                        <!-- <p><?=$vlp['nama_konklusi']?> (<?=$vlp['persentase']?>%)</p> -->
+                    <!-- <?php foreach ($list_penyakit as $klp => $vlp) { ?>
                         <p><?=$vlp['nama_konklusi']?></p>
-                    <?php } ?>
+                    <?php } ?> -->
+                    <p><?=$list_penyakit[0]['nama_konklusi']?></p>
 
                     <br>
                     <p class="p"><strong>Saran:</strong></p>

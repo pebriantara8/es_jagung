@@ -143,7 +143,7 @@ class My_m extends CI_Model {
 		// debug($qf);
 		// tambah yang tidak memiliki gejala ini
 		if(count($where_not)!=0){
-			// debug($qf);
+			$qf2=[];
 			foreach ($qf as $kqf => $vqf) {
 	
 				$add=true;

@@ -75,7 +75,6 @@ class Diagnosa extends Grab_frontend {
 			redirect('diagnosa/result');
 		}
 
-
 		$data['content'] = 'pertanyaan';
 		$data['list_premis'] = $pf;
 		$this->view($data);
@@ -89,8 +88,7 @@ class Diagnosa extends Grab_frontend {
 		$premis = $this->my_m->getPremis();
 		if(count($dt_d)==0) $dt_d=null;
 		if(count($dt_nd)==0) $dt_nd=null;
-		// debug($dt_nd);
-
+		
 		$rule = $this->my_m->getRule($dt_d,$dt_nd);
 		if(count($rule)<=0){
 			array_pop($dt_d);
@@ -101,7 +99,7 @@ class Diagnosa extends Grab_frontend {
 				$rule = $this->my_m->getRule($dt_d,$dt_nd);
 			}
 		}
-
+		
 		// presentase penyakit
 		foreach ($rule as $keyr => $valuer) {
 			$this->db->where('r.konklusi_id', $valuer['id']);
@@ -110,31 +108,40 @@ class Diagnosa extends Grab_frontend {
 			foreach ($hitungr as $khr => $vhr) {
 				$rhrf[] = $vhr['id'];
 			}
-
-			$rr = $this->my_m->getResultRule($dt_d);
-			$rrf=[];
-			$sama=0;
-			foreach ($rr as $krr => $vrr) {
-				if(in_array($vrr['id_premis'],$rhrf)){
-					$sama++;
-				}
-			}
-			// debug($rr);
-
-			$pro = ($sama/count($hitungr))*100;
-			$rule[$keyr]['persentase'] = round($pro, 2);
+			
+			// if(count($dt_d)!=0){
+			// 	$rr = $this->my_m->getResultRule($dt_d);
+			// 	$rrf=[];
+			// 	$sama=0;
+			// 	foreach ($rr as $krr => $vrr) {
+			// 		if(in_array($vrr['id_premis'],$rhrf)){
+			// 			$sama++;
+			// 		}
+			// 	}
+			// 	// debug($rr);
+	
+			// 	$pro = ($sama/count($hitungr))*100;
+			// 	$rule[$keyr]['persentase'] = round($pro, 2);
+			// }
 		}
 
-		if(count($rule)>0){
-			$data['gejala'] = $this->my_m->getResultRule($dt_d);
-			$data['content'] = 'result';
-			$data['list_penyakit'] = $rule;
-			$this->view($data);
-		}elseif(count($rulefix)<=0){
+		if(!$dt_d){
 			$data['content'] = 'result_not_found';
 			$this->view($data);
 		}else{
-			redirect('diagnosa/start');
+
+			if(count($rule)>0){
+	
+				$data['gejala'] = $this->my_m->getResultRule($dt_d);
+				$data['content'] = 'result';
+				$data['list_penyakit'] = $rule;
+				$this->view($data);
+			}elseif(count($rulefix)<=0){
+				$data['content'] = 'result_not_found';
+				$this->view($data);
+			}else{
+				// redirect('diagnosa/start');
+			}
 		}
 
 	}
